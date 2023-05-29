@@ -12,8 +12,8 @@ This project consists of a full-stack application with a frontend developed in R
 
 ## Installation
 
-1. Clone the repository: `git clone [repository URL]`
-2. Navigate to the project directory: `cd [project directory]`
+1. Clone the repository: `git clone https://github.com/bhanujoshi24/url-app.git`
+2. Navigate to the project directory: `cd url-app`
 3. Install frontend dependencies: `cd frontend && npm install`
 4. Install backend dependencies: `cd ../backend && mvn install`
 
@@ -55,7 +55,3 @@ None
 - `handleSubmit`: Handles the form submission, sends a POST request to create a new URL, and fetches the updated URL list.
 - `fetchUrls`: Fetches the list of URLs from the server and updates the `urls` state.
 - `useEffect`: Calls `fetchUrls` once when the component is mounted.
-
-## License
-
-[License information, if applicable]
