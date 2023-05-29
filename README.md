@@ -17,6 +17,10 @@ This project consists of a full-stack application with a frontend developed in R
 3. Install frontend dependencies: `cd frontend && npm install`
 4. Install backend dependencies: `cd ../backend && mvn install`
 
+## BackEnd Repository
+
+1. Spring Boot Project Repo Link:`git clone https://github.com/bhanujoshi24/teluskoContest`
+
 ## Usage
 
 1. Start the backend server: `cd backend && mvn spring-boot:run`
