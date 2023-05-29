@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Project Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+URL Shortener Application
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+In today’s digital world, where long URLs can be cumbersome and difficult to share, URL shorteners have become a popular solution. This project aims to build a URL shortener application using Spring Boot, React, and PostgreSQL.
 
-### `npm start`
+URL shorteners are web applications that take long URLs as input and generate shorter, more compact URLs as output. These shortened URLs redirect users to the original long URLs when accessed. They are commonly used in various scenarios, such as social media sharing, email marketing campaigns, and tracking link clicks.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project consists of a full-stack application with a frontend developed in React and a backend developed in Spring Boot. The frontend allows users to enter a long URL and create a corresponding short URL. The backend handles the URL creation and retrieval operations, storing the data in a PostgreSQL database.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the repository: `git clone [repository URL]`
+2. Navigate to the project directory: `cd [project directory]`
+3. Install frontend dependencies: `cd frontend && npm install`
+4. Install backend dependencies: `cd ../backend && mvn install`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+1. Start the backend server: `cd backend && mvn spring-boot:run`
+2. Start the frontend development server: `cd frontend && npm start`
+3. Open your browser and navigate to: `http://localhost:3000`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend: React, Axios
+- Backend: Spring Boot, Spring Data JPA, PostgreSQL
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Components
 
-### `npm run eject`
+### UrlForm
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The `UrlForm` component allows users to enter a long URL and create a short URL.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Enter the long URL in the input field.
+2. Click on the "Create Short URL" button.
+3. The new URL will be created and added to the list.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Props
 
-## Learn More
+None
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### State
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `inUrl` (string): Holds the value of the input field.
+- `urls` (array): Stores the list of URLs fetched from the server.
 
-### Code Splitting
+#### Methods
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `handleInputChange`: Updates the `inUrl` state based on the input field value.
+- `handleSubmit`: Handles the form submission, sends a POST request to create a new URL, and fetches the updated URL list.
+- `fetchUrls`: Fetches the list of URLs from the server and updates the `urls` state.
+- `useEffect`: Calls `fetchUrls` once when the component is mounted.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[License information, if applicable]
