@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const UrlForm = () => {
-  const [inUrl, setInUrl] = useState("");
+const UrlRetrieve= () => {
   const [urls, setUrls] = useState([]);
+  const [shortUrl, setShortUrl] = useState("");
 
-  const handleInputChange = (e) => {
-    setInUrl(e.target.value);
+  const handleInputChangeShortUrl = (e) => {
+    setShortUrl(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+ 
+  const handleSubmitShortUrl = (e) => {
     e.preventDefault();
 
     const requestBody = {
-      inUrl: inUrl,
+      shortUrl: shortUrl,
     };
 
     axios
-      .post("http://localhost:8080/createUrl", requestBody)
+      .post("http://localhost:8080/originalUrl", requestBody)
       .then((response) => {
         console.log(response.data);
         fetchUrls(); // Fetch updated URL list after creating a new URL
@@ -44,37 +45,38 @@ const UrlForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="mt-4">
+      <form onSubmit={handleSubmitShortUrl} className="mt-4">
         <div className="form-group">
-          <label htmlFor="inUrl">
-            <h2>Enter Long Url</h2>
+          <label htmlFor="shortUrl">
+            <h2>Convert to Original Url</h2>
           </label>
           <input
             type="text"
             className="form-control mb-3"
-            id="inUrl"
-            value={inUrl}
-            placeholder="Enter Long Url"
-            onChange={handleInputChange}
+            id="shortUrl"
+            value={shortUrl}
+            placeholder="Enter Short Url"
+            onChange={handleInputChangeShortUrl}
           />
         </div>
+
         <button type="submit" className="btn btn-primary">
-          Create Short URL
+          Get Original Url
         </button>
       </form>
 
       <table className="table table-striped table-bordered mt-4">
         <thead>
           <tr>
-            <th scope="col">Short URL</th>
+            <th scope="col">Long URL</th>    
           </tr>
         </thead>
         <tbody>
           {urls.map((url) => {
-            if (url.long_url === inUrl) { 
+            if (url.short_url === shortUrl) { 
               return (
                 <tr key={url.id}>
-                  <td>{url.short_url}</td>
+                  <td>{url.long_url}</td>
                 </tr>
               );
             }
@@ -85,5 +87,4 @@ const UrlForm = () => {
     </div>
   );
 };
-
-export default UrlForm;
+export default UrlRetrieve;

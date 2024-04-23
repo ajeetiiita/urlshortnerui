@@ -1,6 +1,6 @@
-import React from "react";
-import UrlForm from "./UrlForm";
 
+/*import React from "react";
+import UrlForm from "./UrlForm";
 function App() {
   return (
     <div className="container">
@@ -8,6 +8,24 @@ function App() {
       <UrlForm />
     </div>
   );
-}
+} 
+
+export default App; */
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import UrlForm from './UrlForm';
+import UrlStats from './UrlStats';
+import UrlRetrieve from './UrlRetrieve';
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<UrlForm />} />
+        <Route path="/stats" element={<UrlStats />} />
+        <Route path="/retrieve" element={<UrlRetrieve />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
