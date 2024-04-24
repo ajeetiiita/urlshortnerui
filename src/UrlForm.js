@@ -17,7 +17,7 @@ const UrlForm = () => {
     };
 
     axios
-      .post("hhttp://serene-reef-56605-09cfe434f5c0.herokuapp.com:8080/createUrl", requestBody)
+      .post("hhttps://serene-reef-56605-09cfe434f5c0.herokuapp.com:8080/createUrl", requestBody)
       .then((response) => {
         console.log(response.data);
         fetchUrls(); // Fetch updated URL list after creating a new URL
@@ -29,7 +29,7 @@ const UrlForm = () => {
 
   const fetchUrls = () => {
     axios
-      .get("http://serene-reef-56605-09cfe434f5c0.herokuapp.com:8080/getAllUrl")
+      .get("https://serene-reef-56605-09cfe434f5c0.herokuapp.com:8080/getAllUrl")
       .then((response) => {
         setUrls(response.data);
       })
