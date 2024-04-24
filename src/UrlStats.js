@@ -17,7 +17,7 @@ const UrlStats = () => {
     };
 
     axios
-      .post("http://localhost:8080/stats", requestBody)
+      .post("https://serene-reef-56605-09cfe434f5c0.herokuapp.com/stats", requestBody)
       .then((response) => {
         console.log(response.data);
         fetchUrls(); // Fetch updated URL list after creating a new URL
@@ -29,7 +29,7 @@ const UrlStats = () => {
 
   const fetchUrls = () => {
     axios
-      .get("http://localhost:8080/getAllUrl")
+      .get("https://serene-reef-56605-09cfe434f5c0.herokuapp.com/getAllUrl")
       .then((response) => {
         setUrls(response.data);
       })
