@@ -17,7 +17,7 @@ const UrlForm = () => {
     };
 
     axios
-      .post("https://tinyurl-40290d5b710d.herokuapp.com:8080/createUrl", requestBody)
+      .post("https://tinyurl-40290d5b710d.herokuapp.com/createUrl", requestBody)
       .then((response) => {
         console.log(response.data);
         fetchUrls(); // Fetch updated URL list after creating a new URL
@@ -29,7 +29,7 @@ const UrlForm = () => {
 
   const fetchUrls = () => {
     axios
-      .get("https://tinyurl-40290d5b710d.herokuapp.com:8080/getAllUrl")
+      .get("https://tinyurl-40290d5b710d.herokuapp.com/getAllUrl")
       .then((response) => {
         setUrls(response.data);
       })
