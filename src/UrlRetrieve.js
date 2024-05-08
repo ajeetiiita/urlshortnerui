@@ -38,14 +38,6 @@ const UrlRetrieve= () => {
       .get(fullOriginalAllUrl)
       .then((response) => {
         setUrls(response.data);
-        let urltoopen = urls[0].long_url;
-
-        // Add the protocol if it's missing
-        if (!/^https?:\/\//i.test(urltoopen)) {
-          urltoopen = "https://" + urltoopen; // Assuming https, you can change it based on your requirement
-        }
-        const decodedUrl = decodeURIComponent(urltoopen);
-        window.location.href = decodedUrl;   
       })
       .catch((error) => {
         console.error(error);
