@@ -24,6 +24,7 @@ const UrlRetrieve= () => {
       .post(fullOriginalUrl, requestBody)
       .then((response) => {
         console.log(response.data);
+        window.location.href = response.data;
         fetchUrls(); // Fetch updated URL list after creating a new URL
       })
       .catch((error) => {
