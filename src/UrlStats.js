@@ -16,8 +16,11 @@ const UrlStats = () => {
       shortUrlForStats: shortUrlForStats,
     };
 
+    const baseUrl = process.env.REACT_APP_BASE_URL;
+    const endpoint = "/stats";
+    const fullOriginalUrl = baseUrl + endpoint;
     axios
-      .post("https://serene-reef-56605-09cfe434f5c0.herokuapp.com/stats", requestBody)
+      .post(fullOriginalUrl, requestBody)
       .then((response) => {
         console.log(response.data);
         fetchUrls(); // Fetch updated URL list after creating a new URL
@@ -27,9 +30,11 @@ const UrlStats = () => {
       });
   };
 
+  const endpointallurl = "/getAllUrl";
+  const fullOriginalAllUrl = baseUrl + endpointallurl;
   const fetchUrls = () => {
     axios
-      .get("https://serene-reef-56605-09cfe434f5c0.herokuapp.com/getAllUrl")
+      .get(fullOriginalAllUrl)
       .then((response) => {
         setUrls(response.data);
       })
