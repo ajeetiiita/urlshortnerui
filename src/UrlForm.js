@@ -30,6 +30,7 @@ const UrlForm = () => {
       });
   };
 
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const endpointallurl = "/getAllUrl";
   const fullOriginalAllUrl = baseUrl + endpointallurl;
   const fetchUrls = () => {

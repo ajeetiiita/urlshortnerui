@@ -17,8 +17,7 @@ const UrlRetrieve= () => {
       shortUrl: shortUrl,
     };
     const baseUrl = process.env.REACT_APP_BASE_URL;
-    const endpoint = "/originalUrl";
-    
+    const endpoint = "/originalUrl";  
     const fullOriginalUrl = baseUrl + endpoint;
     
     axios
@@ -31,6 +30,7 @@ const UrlRetrieve= () => {
         console.error(error);
       });
   };
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const endpointallurl = "/getAllUrl";
   const fullOriginalAllUrl = baseUrl + endpointallurl;
   const fetchUrls = () => {
