@@ -38,7 +38,7 @@ const UrlRetrieve= () => {
       .get(fullOriginalAllUrl)
       .then((response) => {
         setUrls(response.data);
-        let urltoopen = urls[0];
+        let urltoopen = urls[0].long_url;
 
         // Add the protocol if it's missing
         if (!/^https?:\/\//i.test(urltoopen)) {
