@@ -37,11 +37,16 @@ const UrlRetrieve= () => {
     axios
       .get(fullOriginalAllUrl)
       .then((response) => {
-        setUrls(response.data);
+        setUrls(response.data); 
+        response.data.forEach((url) => {
+          if (url.short_url === shortUrl) {
+            window.location.href = url.long_url;
+          }
+        });
       })
       .catch((error) => {
         console.error(error);
-      });
+      })
   };
 
   useEffect(() => {

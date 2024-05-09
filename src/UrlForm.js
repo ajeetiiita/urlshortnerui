@@ -4,7 +4,8 @@ import axios from "axios";
 const UrlForm = () => {
   const [inUrl, setInUrl] = useState("");
   const [urls, setUrls] = useState([]);
-
+  const [invalidUrl, setInvalidUrl] = useState('');
+  const [alreadyPresent, setAlreadyPresent] = useState('');
   const handleInputChange = (e) => {
     setInUrl(e.target.value);
   };
@@ -23,7 +24,15 @@ const UrlForm = () => {
       .post(fullOriginalUrl, requestBody)
       .then((response) => {
         console.log(response.data);
-        fetchUrls(); // Fetch updated URL list after creating a new URL
+        if (response.data.includes("invalid")) {
+          setInvalidUrl(response.data);
+        }
+        else if (response.data.includes("already")) {
+          setAlreadyPresent(response.data);
+        }
+        else {
+          fetchUrls();
+        }// Fetch updated URL list after creating a new URL
       })
       .catch((error) => {
         console.error(error);
@@ -68,28 +77,35 @@ const UrlForm = () => {
           Create Short URL
         </button>
       </form>
+      {/* Conditional rendering based on 'invalidUrl' */}
+      {invalidUrl && <p>{invalidUrl}</p>}
 
-      <table className="table table-striped table-bordered mt-4">
-        <thead>
-          <tr>
-            <th scope="col">Short URL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {urls.map((url) => {
-            if (url.long_url === inUrl) { 
-              return (
-                <tr key={url.id}>
-                  <td>{url.short_url}</td>
-                </tr>
-              );
-            }
-            return null; // Skip rendering if the URL doesn't match
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+      {/* Conditional rendering based on 'alreadyPresent' */}
+      {alreadyPresent && <p>{alreadyPresent}</p>}
+
+      {/* Render table only if neither 'invalidUrl' nor 'alreadyPresent' */}
+      {!invalidUrl && !alreadyPresent && (
+        <table className="table table-striped table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Short URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {urls.map((url) => {
+              if (url.long_url === inUrl) {
+                return (
+                  <tr key={url.id}>
+                    <td>{url.short_url}</td>
+                  </tr>
+                );
+              }
+              return null; // Skip rendering if the URL doesn't match
+            })}
+          </tbody>
+        </table>
+      )}
+    </div>)
+}
 
 export default UrlForm;
